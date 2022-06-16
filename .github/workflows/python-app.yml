@@ -47,7 +47,8 @@ jobs:
         # A file, directory or wildcard pattern that describes what to upload
         path: _build/html
         
-  build-and-deploy:
+  deploy:
+    needs: build
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
     steps:
