@@ -31,6 +31,4 @@ jobs:
     - name: Lint with PyLint
       run: |
         GIT_DIFF_TREE=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '.*.py')
-        if [[ $(git diff-tree --no-commit-id --name-only -r HEAD) ]]; then
-          pylint $GIT_DIFF_TREE;
-        fi
+        if [[ $(git diff-tree --no-commit-id --name-only -r HEAD) ]]; then pylint $GIT_DIFF_TREE; fi
