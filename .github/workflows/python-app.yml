@@ -29,13 +29,12 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pytest pylint
+        pip install pytest pylint sphinx
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with PyLint
       run: |
         echo ${{env.GIT_DIFF_TREE}}
         if [[ ${{env.GIT_DIFF_TREE}} ]]; then pylint ${{env.GIT_DIFF_TREE}}; fi
-        
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.1.0
       with:
@@ -43,3 +42,7 @@ jobs:
         name: artifact
         # A file, directory or wildcard pattern that describes what to upload
         path: index/house.py
+    - name: Generate sphinx documentation
+      run: |
+        sphinx-apidoc -o . index
+        make html
