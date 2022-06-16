@@ -3,7 +3,7 @@ Example module with example docs.
 """
 class House:
     """
-    House encapsulates a name and an age.
+    House encapsulates a name and an age..
     """
     def __init__(self, name, age):
         """
