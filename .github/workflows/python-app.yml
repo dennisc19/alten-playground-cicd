@@ -33,4 +33,4 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with PyLint
       run: |
-        if [[ ${{GIT_DIFF_TREE}} ]]; then pylint ${{GIT_DIFF_TREE}}; fi
+        if [[ ${{env.GIT_DIFF_TREE}} ]]; then pylint ${{env.GIT_DIFF_TREE}}; fi
