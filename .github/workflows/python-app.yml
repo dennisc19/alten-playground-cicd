@@ -13,7 +13,7 @@ env:
   GIT_DIFF_TREE: $(git diff-tree --no-commit-id --name-only -r HEAD | grep '.*.py')
 
 permissions:
-  contents: read, write
+  contents: read|write
 
 jobs:
   build:
