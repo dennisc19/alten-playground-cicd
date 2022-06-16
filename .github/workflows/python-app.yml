@@ -30,4 +30,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Lint with PyLint
       run: |
-        pylint $(git diff-tree --no-commit-id --name-only -r HEAD | grep '.*.py')
+        GIT_DIFF_TREE=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '.*.py')
+        if [[ $(git diff-tree --no-commit-id --name-only -r HEAD) ]]; then
+          pylint $GIT_DIFF_TREE;
+        fi
